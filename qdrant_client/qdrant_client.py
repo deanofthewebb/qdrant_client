@@ -49,7 +49,6 @@ class QdrantClient:
 
     def __init__(self,
                  host="localhost",
-                 port=6333,
                  grpc_port=6334,
                  prefer_grpc=False,
                  https=False,
@@ -57,8 +56,7 @@ class QdrantClient:
         self._prefer_grpc = prefer_grpc
         self._grpc_port = grpc_port
         self._host = host
-        self._port = port
-        self.rest_uri = f"http{'s' if https else ''}://{host}:{port}"
+        self.rest_uri = f"http{'s' if https else ''}://{host}"
         self.openapi_client = SyncApis(host=self.rest_uri, **kwargs)
 
         self._grpc_channel = None
